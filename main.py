@@ -6,6 +6,7 @@ def calcular_imc(peso, altura):
     """Calcula el indice de masa corporal"""
     
 def calcular_grasa_corporal(peso, altura, edad, genero):
+    """Calcula La Grasa Corporal"""
     imc = calcular_imc(peso, altura)
     if genero == "M":
         valor_genero = 10.8
