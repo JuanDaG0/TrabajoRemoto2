@@ -29,7 +29,14 @@ def calcular_tmb(peso, altura, edad, sexo):
 
 
 def calcular_calorias_adelgazar(tmb, actividad):
-    """Calcula calorias diarias para adelgazar"""
+    """Calcula calorías diarias para adelgazar"""
+    if actividad == "1":
+        factor = 1.2
+    elif actividad == "2":
+        factor = 1.375
+    else:
+        factor = 1.55
+    return tmb * factor - 500
     
 
 
@@ -69,13 +76,31 @@ def menu():
         print("Tu porcentaje de grasa corporal es:", round(grasa, 2), "%")
 
     elif opcion == "3":
-        print("TMB")
+        peso = float(input("Peso (kg): "))
+        altura = float(input("Altura (m): "))
+        edad = int(input("Edad: "))
+        sexo = input("Sexo (M/F): ").upper()
+        tmb = calcular_tmb(peso, altura, edad, sexo)
+        print("Tu TMB es:", round(tmb, 2), "calorías")
 
     elif opcion == "4":
-        print("Calorias para adelgazar")
+        peso = float(input("Peso (kg): "))
+        altura = float(input("Altura (m): "))
+        edad = int(input("Edad: "))
+        sexo = input("Sexo (M/F): ").upper()
+        tmb = calcular_tmb(peso, altura, edad, sexo)
+
+        print("Nivel de actividad:")
+        print("1. Baja")
+        print("2. Media")
+        print("3. Alta")
+        actividad = input("Elige (1-3): ")
+
+        calorias = calcular_calorias_adelgazar(tmb, actividad)
+        print("Calorías diarias para adelgazar:", round(calorias, 2))
 
     else:
-        print("No valido")
+        print("Opción no válida")
 
 
 menu()
