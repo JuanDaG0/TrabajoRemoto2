@@ -3,29 +3,35 @@ Calculadora de Salud - Equipo
 """
 
 def calcular_imc(peso, altura):
-    imc = peso / (altura * altura) 
+    imc = peso / (altura * altura)
     return imc
     
+
 def calcular_grasa_corporal(peso, altura, edad, genero):
-    """Calcula La Grasa Corporal"""
+    """Calcula la Grasa Corporal"""
     imc = calcular_imc(peso, altura)
+
     if genero == "M":
         valor_genero = 10.8
     else:
         valor_genero = 0
+
     grasa = (1.2 * imc) + (0.23 * edad) - 5.4 - valor_genero
     return grasa
+
 
 def calcular_tmb(peso, altura, edad, sexo):
     """Calcula la tasa metabolica basal"""
 
     altura_cm = altura * 100
 
-    tmb = (10 * peso) + (6.25 * altura_cm) - (5 * edad) + sexo
+    if sexo == "M":
+        factor_sexo = 5
+    else:
+        factor_sexo = -161
 
-    return float(tmb) 
-    
-    
+    tmb = (10 * peso) + (6.25 * altura_cm) - (5 * edad) + factor_sexo
+    return tmb
 
 
 def calcular_calorias_adelgazar(tmb, actividad):
@@ -36,8 +42,8 @@ def calcular_calorias_adelgazar(tmb, actividad):
         factor = 1.375
     else:
         factor = 1.55
+
     return tmb * factor - 500
-    
 
 
 def menu():
@@ -72,6 +78,7 @@ def menu():
         altura = float(input("Ingresa tu altura en metros: "))
         edad = int(input("Ingresa tu edad: "))
         genero = input("Ingresa tu género (M/F): ").upper()
+
         grasa = calcular_grasa_corporal(peso, altura, edad, genero)
         print("Tu porcentaje de grasa corporal es:", round(grasa, 2), "%")
 
@@ -80,6 +87,7 @@ def menu():
         altura = float(input("Altura (m): "))
         edad = int(input("Edad: "))
         sexo = input("Sexo (M/F): ").upper()
+
         tmb = calcular_tmb(peso, altura, edad, sexo)
         print("Tu TMB es:", round(tmb, 2), "calorías")
 
@@ -88,6 +96,7 @@ def menu():
         altura = float(input("Altura (m): "))
         edad = int(input("Edad: "))
         sexo = input("Sexo (M/F): ").upper()
+
         tmb = calcular_tmb(peso, altura, edad, sexo)
 
         print("Nivel de actividad:")
