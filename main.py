@@ -52,14 +52,14 @@ def menu():
         else:
             print("Clasificación: Obesidad")
 
-elif opcion == "2":
-    print("\nCALCULADORA DE GRASA CORPORAL")
-    peso = float(input("Ingresa tu peso en kilogramos: "))
-    altura = float(input("Ingresa tu altura en metros: "))
-    edad = int(input("Ingresa tu edad: "))
-    genero = input("Ingresa tu género (M/F): ").upper()
-    grasa = calcular_grasa_corporal(peso, altura, edad, genero)
-    print("Tu porcentaje de grasa corporal es:", round(grasa, 2), "%")
+    elif opcion == "2":
+        print("\nCALCULADORA DE GRASA CORPORAL")
+        peso = float(input("Ingresa tu peso en kilogramos: "))
+        altura = float(input("Ingresa tu altura en metros: "))
+        edad = int(input("Ingresa tu edad: "))
+        genero = input("Ingresa tu género (M/F): ").upper()
+        grasa = calcular_grasa_corporal(peso, altura, edad, genero)
+        print("Tu porcentaje de grasa corporal es:", round(grasa, 2), "%")
 
     elif opcion == "3":
         print("TMB")
