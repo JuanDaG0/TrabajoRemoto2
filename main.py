@@ -18,6 +18,13 @@ def calcular_grasa_corporal(peso, altura, edad, genero):
 
 def calcular_tmb(peso, altura, edad, sexo):
     """Calcula la tasa metabolica basal"""
+
+    altura_cm = altura * 100
+
+    tmb = (10 * peso) + (6.25 * altura_cm) - (5 * edad) + sexo
+
+    return float(tmb) 
+    
     
 
 
